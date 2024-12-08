@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/index.css') }}">
+    <title>SSRF Lab</title>
+</head>
+<body>
+    <img src="{{ url_for('static', filename='img/banner.jpg') }}" alt="Banner">
+    <div class="content">
+        <h1><strong>SSRF Lab - Bypass filter</strong></h1>
+        <p><b><i><u>Description:</u></i></b> Zekrom and Reshiram is fighting to each other, whoever get the flag first is the winner. 
+            The flag stored at <b>localhost:5678/flag</b> but how can they access to this?</p>
+        <button onclick="window.location.href='/zekrom_easy'">Zekrom level 1- SSRF bypass blacklist</button> <br>
+        <button onclick="window.location.href='/zekrom'">Zekrom level 2- SSRF bypass blacklist</button> <br>
+        <button onclick="window.location.href='/reshiram'">Reshiram - SSRF bypass whitelist</button><br>
+        <button onclick="window.location.href='/zeshiram'">Zeshiram - SSRF bypass black-white_list</button>
+    </div>
+</body>
+</html>

@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Zeshiram Playground</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/lab.css') }}">
+    <script src="{{ url_for('static', filename='js/lab.js') }}"></script>
+</head>
+<body>
+    <img src="{{ url_for('static', filename='img/banner.jpg') }}" class="banner-img" alt="banner">
+    <h1>Zeshiram Playground - Bypass Black-White_list</h1>
+    <p><b>Zekrom</b> and <b>Reshiram</b> encountered a <b>Rattata</b>, you need to roll an even number to help they win this battle!!</p>
+    <button id="generate-btn" onclick="generate('bw')">Generate Random Number</button>
+    <div id="result"></div>
+
+    <button id="toggle-code-btn" class="toggle-btn" onclick="showCode('displayCode/zeshiram.txt')">Show Code</button>
+    <div id="code-container"></div>
+</body>
+</html>

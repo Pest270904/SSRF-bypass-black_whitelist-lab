@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Zekrom Playground</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/lab.css') }}">
+    <script src="{{ url_for('static', filename='js/lab.js') }}"></script>
+</head>
+<body>
+    <img src="{{ url_for('static', filename='img/banner_black.png') }}" class="banner-img" alt="banner">
+    <h1>Zekrom Playground Level 2- Bypass blacklist</h1>
+    <p><b>Reshiram</b> scored 50 point, you need to help <b>Zekrom</b> win by rolling a bigger number for him!!</p>
+    <button id="generate-btn" onclick="generate('b')">Generate Random Number</button>
+    <div id="result"></div>
+
+    <button id="toggle-code-btn" class="toggle-btn" onclick="showCode('displayCode/zekrom.txt')">Show Code</button>
+    <div id="code-container"></div>
+</body>
+</html>

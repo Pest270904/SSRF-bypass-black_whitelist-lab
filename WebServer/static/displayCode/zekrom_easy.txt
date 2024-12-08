@@ -1,0 +1,10 @@
+@app.route('/zekrom_easy', methods=['GET', 'POST'])
+def lab_b():
+    if request.method == 'GET':
+        return render_template('zekrom_easy.html')
+    else:
+        url = request.json.get('url', '')
+        for a in ['localhost', '127.0.0.1']:
+            if a in url:
+                return f"{a} is not allowed";
+        return requests.get(url).text

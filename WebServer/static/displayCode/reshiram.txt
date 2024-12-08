@@ -1,0 +1,14 @@
+@app.route('/reshiram', methods=['GET', 'POST'])
+def getAPI_white():
+    if request.method == 'GET':
+        return render_template('reshiram.html')
+    else:
+        url = unquote(request.json.get('url', ''))
+
+        whitelist = ["a-m7z4.onrender.com"]
+
+        for allowed_domain in whitelist:
+            if allowed_domain in url:
+                return requests.get(url).text
+        
+        return "You can only access to host a-m7z4.onrender.com"

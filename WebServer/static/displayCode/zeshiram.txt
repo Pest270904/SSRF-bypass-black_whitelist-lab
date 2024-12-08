@@ -1,0 +1,39 @@
+def is_domain(hostname):
+    DOMAIN_REGEX = r"^(?![0-9]+$)(?!-)[A-Za-z0-9-]{1,63}(?<!-)$"
+    if hostname:
+        parts = hostname.split('.')
+        return all(re.match(DOMAIN_REGEX, part) for part in parts)
+    return False
+
+@app.route('/zeshiram', methods=['GET', 'POST'])
+def lab_bw():
+    if request.method == 'GET':
+        return render_template('zeshiram.html')
+    else:
+        url = unquote(request.json.get('url', ''))
+        parsed_url = urlparse(url)
+        hostname = parsed_url.hostname
+
+        # whitelist filter
+        whitelist = ["a-m7z4.onrender.com"]
+        whitelist_check = 0
+
+        for allowed_domain in whitelist:
+            if allowed_domain in url:
+                whitelist_check = 1
+
+        if whitelist_check == 0:
+            return "You can only access to host a-m7z4.onrender.com"
+
+        # blacklist filter
+        for a in ['localhost', '127.0.0.1']:
+            if a in url:
+                return f"{a} is not allowed";
+
+        # if hostname is a domain
+        if is_domain(hostname):
+            resolved_ips = dns.resolver.resolve(hostname, 'A')
+            resolved_ips = [str(ip) for ip in resolved_ips]
+            if "127.0.0.1" in resolved_ips:
+                return f"Host '{hostname}' redirect to localhost, not allowed....."; 
+        return requests.get(url).text
